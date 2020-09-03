@@ -1,19 +1,13 @@
 package com.alporan.springconfigurations.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Required;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import org.springframework.beans.factory.annotation.Value;
 
 public class MessageProcessorImpl implements MessageProcessor {
 	
-	private String message;
+	@Value("${input.message}")private String message;
 	private MessageService messageService;
 	
-	@Autowired
-	public MessageProcessorImpl(@Qualifier("emailService") MessageService messageService) {
+	public MessageProcessorImpl(MessageService messageService) {
 		this.messageService = messageService;
 	}
 	
@@ -23,19 +17,12 @@ public class MessageProcessorImpl implements MessageProcessor {
 	}
 	
 	@Override
-	@PostConstruct
 	public void initBean() {
 		messageService.sendMessage("Initialized");
 	}
 	
 	@Override
-	@PreDestroy
 	public void destroyBean() {
 		messageService.sendMessage("Destroyed");
-	}
-	
-	@Required
-	public void setMessage(String message) {
-		this.message = message;
 	}
 }
