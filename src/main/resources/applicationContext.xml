@@ -8,6 +8,8 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <context:annotation-config/>
+
     <bean name="emailService"
           class="com.alporan.springconfigurations.services.EmailService" />
 
@@ -15,11 +17,8 @@
           class="com.alporan.springconfigurations.services.SmsService" />
 
     <bean name="messageProcessor"
-          class="com.alporan.springconfigurations.services.MessageProcessorImpl"
-          init-method="initBean"
-          destroy-method="destroyBean">
-        <property name="message" value="${input.message}" />
-        <constructor-arg name="messageService" ref="emailService"> </constructor-arg>
+          class="com.alporan.springconfigurations.services.MessageProcessorImpl">
+          <property name="message" value="${input.message}" />
     </bean>
 
 </beans>
