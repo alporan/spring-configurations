@@ -1,7 +1,7 @@
 package com.alporan.springconfigurations.services;
 
 public interface MessageProcessor {
-	void processMsg();
+	void processMessage();
 	
 	void initBean();
 	

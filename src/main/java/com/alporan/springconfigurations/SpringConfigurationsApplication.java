@@ -12,9 +12,7 @@ public class SpringConfigurationsApplication {
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = SpringApplication.run(SpringConfigurationsApplication.class, args);
-		
 		MessageProcessor messageProcessor = applicationContext.getBean(MessageProcessor.class);
-		messageProcessor.processMsg();
+		messageProcessor.processMessage();
 	}
-	
 }

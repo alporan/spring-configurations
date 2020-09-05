@@ -10,7 +10,7 @@ public class MessageProcessorImpl implements MessageProcessor {
 	}
 	
 	@Override
-	public void processMsg() {
+	public void processMessage() {
 		messageService.sendMessage(this.message);
 	}
 	
